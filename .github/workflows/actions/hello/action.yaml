@@ -18,7 +18,7 @@ runs:
   using: "composite"
   steps:
     - name: Push to ACR
-      if: inputs.DEPLOY_BRANCH
+      if: inputs.DEPLOY_BRANCH && inputs.PUSH_TO_ACR == 'true'
       shell: bash
       env:
         VERSION_NUMBER: 1.0
@@ -26,6 +26,6 @@ runs:
         echo "Pushing to ACR"
         docker --version && echo $VERSION_NUMBER
     - name: Push to ECR
-      if: inputs.DEPLOY_BRANCH
+      if: inputs.DEPLOY_BRANCH && inputs.PUSH_TO_ECR == 'true'
       shell: bash
       run: echo "Pushing to ECR"
