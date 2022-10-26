@@ -15,4 +15,4 @@ jobs:
         uses: ./.github/workflows/actions/hello
         with:
           DEPLOY_BRANCH: mybranch
-          SKIP_PUSH_TO_ACR: true
+          SKIP_PUSH_TO_ECR: true
