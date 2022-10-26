@@ -13,3 +13,5 @@ jobs:
           ls -lt  
       - name: Run hello!
         uses: ./.github/workflows/actions/hello
+        with:
+          DEPLOY_BRANCH: mybranch
