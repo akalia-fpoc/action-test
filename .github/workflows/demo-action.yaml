@@ -1,0 +1,15 @@
+name: GitHub Actions Demo
+run-name: ${{ github.actor }} is testing 🚀
+on: [push]
+jobs:
+  one:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: List files in the repository
+        run: |
+          pwd 
+          ls -lt  
+      - name: Run hello!
+        uses: ./.github/workflows/actions/hello

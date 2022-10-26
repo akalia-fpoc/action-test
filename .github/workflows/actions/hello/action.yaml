@@ -1,0 +1,15 @@
+name: hello
+description: Test description
+inputs:
+  DEPLOY_BRANCH:
+    required: true
+    description: The branch to deploy 
+runs:
+  using: "composite"
+  steps:
+    - name: docker version
+      shell: bash
+      env:
+        VERSION_NUMBER: 1.0
+      run: |
+        docker --version && echo $VERSION_NUMBER
