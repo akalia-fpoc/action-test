@@ -15,3 +15,4 @@ jobs:
         uses: ./.github/workflows/actions/hello
         with:
           DEPLOY_BRANCH: mybranch
+          PUSH_TO_ACR: false
