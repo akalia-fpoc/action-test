@@ -4,12 +4,28 @@ inputs:
   DEPLOY_BRANCH:
     required: true
     description: The branch to deploy 
+  PUSH_TO_ACR:
+    required: true
+    description: Is image pushed to ACR repo
+    type: boolean
+    default: true
+  PUSH_TO_ECR:
+    required: true
+    description: Is image pushed to ECR repo 
+    type: boolean
+    default: true
 runs:
   using: "composite"
   steps:
-    - name: docker version
+    - name: Push to ACR
+      if: inputs.DEPLOY_BRANCH && inputs.PUSH_TO_ACR == true
       shell: bash
       env:
         VERSION_NUMBER: 1.0
       run: |
+        echo "Pushing to ACR"
         docker --version && echo $VERSION_NUMBER
+    - name: Push to ECR
+      if: inputs.DEPLOY_BRANCH && inputs.PUSH_TO_ECR == true
+      shell: bash
+      run: echo "Pushing to ECR"
